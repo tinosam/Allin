@@ -1,16 +1,32 @@
-<%= content_for :title, "New Post" %>
+<%= content_for :title, "Nouveau Projet" %>
 
-<div class="edit">
+<div class="main">
 
-  <div class="edit_info">
-    <%= image_tag  "ruby-red.png", class: "edit_img", alt: "Your avatar" %>
-      <span>Create Post</span>
+  <div class="section section-light text-center landing-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <h2>Projets</h2>
+          <h5>Poster Projets ici</h5>
+          <br />
+         
+        </div>
+      </div>
+    </div>
   </div>
 
-  <%= form_for @post, url: { action: 'create_post' } do |f| %>
+  
+  <div class="edit">
+
+    <div class="edit_info">
+      <%= image_tag  "ruby-red.png", class: "edit_img", alt: "Your avatar" %>
+      <span>Create Post</span>
+    </div>
+
+    <%= form_for @post, url: { action: 'create_post' } do |f| %>
 
     <% if @post.errors.any? %>
-      <%= render 'partials/mssg', mssg: @post.errors.full_messages[0] %>
+    <%= render 'partials/mssg', mssg: @post.errors.full_messages[0] %>
     <% end %>
 
     <div class="eu_div">
@@ -25,6 +41,7 @@
       <%= f.submit "Create Post" %>
     </div>
 
-  <% end %>
+    <% end %>
 
+  </div>
 </div>

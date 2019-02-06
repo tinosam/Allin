@@ -1,10 +1,10 @@
 <%= render 'partials/tophead' %>
 
 <% if flash.any? %>
-  <%= render 'partials/mssg', mssg: flash[:notice] %>
+<%= render 'partials/mssg', mssg: flash[:notice] %>
 <% end %>
 
-<% if !session[:id] %>
+<!-- <% if !session[:id] %>
   <div class="index_header">
     <div class="right">
       <%= link_to "Home", welcome_path %>
@@ -25,4 +25,97 @@
       <%= link_to "Logout", logout_path %>
     </div>
   </div>
-<% end %>
+<% end %> -->
+
+
+
+
+
+<nav class="navbar navbar-ct-warning navbar-relative fixed-top" role="navigation-demo" id="demo-navbar">
+
+  <div class="container">
+
+    <div class="navbar-header">
+
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+
+        <span class="sr-only">Toggle navigation</span>
+
+        <span class="icon-bar"></span>
+
+        <span class="icon-bar"></span>
+
+        <span class="icon-bar"></span>
+
+      </button>
+
+      <a class="btn btn-default" href="/">All'in</a>
+
+    </div>
+
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <%= link_to "Acceuil", root_path ,class:"btn btn-simple"%>
+        </li>
+      
+        <li>
+          <%= link_to "Actualité", explore_path,class:"btn btn-simple" %>
+        </li>
+        <li>
+            <%= link_to "Projets", new_post_path ,class:"btn btn-simple"%>
+          </li>
+        <li><a href=""class="btn btn-simple">Gallery</a></li>
+        <li>
+          <a href="" class="btn btn-simple">Archives</a>
+        </li>
+
+
+        <li class="dropdown">
+
+          <a href="#" class="dropdown-toggle btn btn-simple" data-toggle="dropdown">Connexion
+            <b class="caret"></b>
+          </a>
+
+          <ul class="dropdown-menu">
+            <% if !session[:id] %>
+            <li>
+              <%= link_to "Signup", signup_path %>
+            </li>
+
+            <li>
+              <%= link_to "Login", login_path %>
+            </li>
+            <% else %>
+
+
+
+
+
+
+            <li>
+              <%= link_to  "Desactivate account", deactivate_path(session[:id]) %>
+            </li>
+
+            <li>
+              <%= link_to "Profile", profile_path(session[:id]) %>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <%= link_to "Logout", logout_path%>
+            </li>
+            <% end %>
+          </ul>
+
+        </li>
+
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+
+  </div><!-- /.container-fluid -->
+
+</nav>
+
