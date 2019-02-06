@@ -632,3 +632,105 @@ Processing by UsersController#profile as HTML
 Completed 200 OK in 37ms (Views: 25.3ms | ActiveRecord: 6.1ms)
 
 
+Started GET "/" for 127.0.0.1 at 2019-02-06 19:06:22 +0300
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#index as HTML
+  Rendering pages/index.html.erb within layouts/application
+  Rendered pages/index.html.erb within layouts/application (981.6ms)
+  Rendered partials/_tophead.html.erb (9.0ms)
+  Rendered partials/_header.html.erb (12.1ms)
+  Rendered partials/_footer.html.erb (0.7ms)
+Completed 200 OK in 1048ms (Views: 1034.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/profile/1" for 127.0.0.1 at 2019-02-06 19:06:26 +0300
+Processing by UsersController#profile as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (3.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "follows" WHERE "follows"."follow_to" = $1[0m  [["follow_to", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "follows" WHERE "follows"."follow_by" = $1[0m  [["follow_by", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "views" WHERE "views"."view_to" = $1[0m  [["view_to", 1]]
+  Rendering users/profile.html.erb within layouts/application
+  [1m[36mPost Load (3.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user" = $1 ORDER BY "posts"."id" DESC[0m  [["user", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_post.html.erb (3.2ms)
+  Rendered partials/_end.html.erb (0.5ms)
+  Rendered users/profile.html.erb within layouts/application (25.8ms)
+  Rendered partials/_tophead.html.erb (9.9ms)
+  Rendered partials/_header.html.erb (13.6ms)
+  Rendered partials/_footer.html.erb (0.5ms)
+Completed 200 OK in 181ms (Views: 41.7ms | ActiveRecord: 25.5ms)
+
+
+Started GET "/view_post/1" for 127.0.0.1 at 2019-02-06 19:06:30 +0300
+Processing by PostsController#view_post as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (4.6ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post" = $1[0m  [["post", 1]]
+  Rendering posts/view_post.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."like_by" = $1 AND "likes"."post" = $2[0m  [["like_by", 1], ["post", 1]]
+  Rendered posts/view_post.html.erb within layouts/application (3.6ms)
+  Rendered partials/_tophead.html.erb (12.1ms)
+  Rendered partials/_header.html.erb (14.7ms)
+  Rendered partials/_footer.html.erb (0.4ms)
+Completed 200 OK in 37ms (Views: 23.0ms | ActiveRecord: 7.7ms)
+
+
+Started GET "/likes/1" for 127.0.0.1 at 2019-02-06 19:06:34 +0300
+Processing by LikeController#likes as HTML
+  Parameters: {"id"=>"1"}
+  Rendering like/likes.html.erb within layouts/application
+  [1m[36mLike Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post" = $1 LIMIT $2[0m  [["post", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Like Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post" = $1 LIMIT $2[0m  [["post", 1], ["LIMIT", 1]]
+  Rendered partials/_nothing.html.erb (2.1ms)
+  [1m[36mCACHE Like Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post" = $1 LIMIT $2[0m  [["post", 1], ["LIMIT", 1]]
+  Rendered like/likes.html.erb within layouts/application (7.8ms)
+  Rendered partials/_tophead.html.erb (7.0ms)
+  Rendered partials/_header.html.erb (9.4ms)
+  Rendered partials/_footer.html.erb (0.8ms)
+Completed 200 OK in 25ms (Views: 22.1ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/like/1" for 127.0.0.1 at 2019-02-06 19:06:37 +0300
+Processing by LikeController#like as HTML
+  Parameters: {"authenticity_token"=>"Xv2AaBrYrMZvUGamr358As74bWtxG7ffHRhN/0657I4uWtHP6KxlC8XQDknImitI8OW+Qsb/PqrPbSrNRShcNQ==", "id"=>"1"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Create (0.5ms)[0m  [1m[32mINSERT INTO "likes" ("like_by", "post", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["like_by", 1], ["post", 1], ["created_at", "2019-02-06 16:06:37.077211"], ["updated_at", "2019-02-06 16:06:37.077211"]]
+  [1m[35m (11.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/view_post/1
+Completed 302 Found in 26ms (ActiveRecord: 14.1ms)
+
+
+Started GET "/view_post/1" for 127.0.0.1 at 2019-02-06 19:06:37 +0300
+Processing by PostsController#view_post as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post" = $1[0m  [["post", 1]]
+  Rendering posts/view_post.html.erb within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."like_by" = $1 AND "likes"."post" = $2[0m  [["like_by", 1], ["post", 1]]
+  Rendered posts/view_post.html.erb within layouts/application (4.5ms)
+  Rendered partials/_tophead.html.erb (8.1ms)
+  Rendered partials/_mssg.html.erb (0.5ms)
+  Rendered partials/_header.html.erb (13.1ms)
+  Rendered partials/_footer.html.erb (0.5ms)
+Completed 200 OK in 31ms (Views: 22.7ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2019-02-06 19:06:41 +0300
+Processing by UsersController#logout as HTML
+Redirected to http://localhost:3000/login
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2019-02-06 19:06:41 +0300
+Processing by UsersController#login as HTML
+  Rendering users/login.html.erb within layouts/application
+  Rendered users/login.html.erb within layouts/application (1.9ms)
+  Rendered partials/_tophead.html.erb (11.2ms)
+  Rendered partials/_mssg.html.erb (1.3ms)
+  Rendered partials/_header.html.erb (16.5ms)
+  Rendered partials/_footer.html.erb (1.0ms)
+Completed 200 OK in 27ms (Views: 25.5ms | ActiveRecord: 0.0ms)
+
+
