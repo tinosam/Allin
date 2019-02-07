@@ -1,10 +1,9 @@
 <% content_for :title, "Login" %>
+<body class="login-page sidebar-collapse">
 
-<div class="log_sign">
-  <%= link_to "Need an account?", signup_path, class: "pri_btn" %>
-</div>
 
-<div class="login cua ">
+
+<!-- <div class="login cua ">
 
   <div class="display_text">
     <span>Get started again</span>
@@ -16,4 +15,58 @@
     <%= submit_tag "Login to continue", class:"l_submit" %>
   <% end %>
 
-</div>
+</div> -->
+ <div class="page-header clear-filter" filter-color="yellow">
+    <div class="page-header-image" style="background-image:url(../assets/img/login.jpg)"></div>
+    <div class="content">
+        <div class="log_sign">
+          
+          </div>
+      <div class="container">
+        <div class="col-md-4 ml-auto mr-auto">
+          <div class="card card-login card-plain">
+          
+                <%= form_tag log_user_path ,class:"form" do %>
+              <div class="card-header text-center">
+                <div class="logo-container">
+                  <img src="../assets/img/now-logo.png" alt="">
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="input-group no-border input-lg">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="now-ui-icons users_circle-08"></i>
+                    </span>
+                  </div>
+                  <%= text_field_tag :username, params[:username], class:"l_username form-control", autofocus:true, required:true, spellcheck:false, autocomplete:false, placeholder:'Pseudo' %>
+                </div>
+                <div class="input-group no-border input-lg">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="now-ui-icons ui-1_lock-circle-open"></i>
+                    </span>
+                  </div>
+                  <%= password_field_tag :password, params[:password], class:"l_password form-control", required:true, placeholder:'Mot de Passe' %>
+                </div>
+              </div>
+              <div class="card-footer text-center">
+                <%= submit_tag "Connexion", class:"l_submit btn btn-primary btn-round btn-lg btn-block" %>
+
+                <div class="pull-left">
+                  <h6>
+                
+                    <%= link_to "Enregistrez-vous ici", signup_path, class: "link" %>
+                  </h6>
+                </div>
+                <div class="pull-right">
+                  <h6>
+                    <a href="#" class="link">Besoin d'aide?</a>
+                  </h6>
+                </div>
+                <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

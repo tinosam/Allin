@@ -7,21 +7,23 @@
 <% content_for :title, "@#{@username}" %>
 
 
+<div class="wrapper">
+  <div class="page-header page-header-small">
 
-<div class="main">
+    <div class="page-header-image" data-parallax="true" style="background-image:url('./assets/img/header.jpg">
+    </div>
 
-  <div class="section section-light text-center landing-section">
-    <div class="container">
+
+    <div class="content-center">
       <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <h2>Profile</h2>
-          <h5>###</h5>
-          <br />
-
+        <div class="col-md-8 ml-auto mr-auto text-center">
+          <h2 class="title">Poster</h2>
+          <h4>All'In lancé en 2019.</h4>
         </div>
       </div>
     </div>
   </div>
+
   <div class="profile_data" data-get_id="<%= @id %>" data-get_username="<%= @username %>" data_get_email="<%= @email %>"></div>
 
   <div class="aligner">
@@ -35,9 +37,9 @@
         <%= link_to "Create Post", new_post_path, class: "create_note_btn pri_btn" %>
         <% else %>
         <% if is_following(@id) %>
-        <%= link_to "Unfollow", unfollow_path(@id), :method => :post, :class => "unfollow pri_btn" %>
+        <%= link_to "Ne Plus Suivre", unfollow_path(@id), :method => :post, :class => "unfollow pri_btn" %>
         <% else %>
-        <%= link_to "Follow", follow_path(@id), :method => :post, :class => "follow pri_btn" %>
+        <%= link_to "Suivre", follow_path(@id), :method => :post, :class => "follow pri_btn" %>
         <% end %>
         <% end %>
       </div>
@@ -96,5 +98,38 @@
     </div>
 
   </div>
+</div>
+<div class="main">
 
+    <footer class="footer" style="" data-background-color="black">
+        <div class="container">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="https://www.creative-tim.com">
+                            Acceuil
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://presentation.creative-tim.com">
+                            Contact
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://blog.creative-tim.com">
+                            Coming soon ....
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="copyright" id="copyright">
+                &copy;
+                <script>
+                    document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
+                </script>Designed by
+                <a href="https://www.invisionapp.com" target="_blank">akoho corps</a>. Coded by
+                <a href="https://www.creative-tim.com" target="_blank">team akoho</a>.
+            </div>
+        </div>
+    </footer>
 </div>

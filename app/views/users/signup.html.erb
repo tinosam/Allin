@@ -1,19 +1,24 @@
 <% content_for :title, "Signup" %>
 
-<div class="log_sign">
-  <%= link_to "Already have an account?", login_path, class: "pri_btn" %>
-</div>
 
-<div class="register cua ">
+<body class="signup-page">
 
-  <div class="display_text">
-    <span>Get started now and let the fun begins</span>
-  </div>
 
-  <%= form_for @user, url: { action: 'create_user' } do |f| %>
+
+  <!-- <div class="log_sign">
+    <%= link_to "Already have an account?", login_path, class: "pri_btn" %>
+  </div> -->
+
+  <!-- <div class="register cua ">
+
+    <div class="display_text">
+      <span>Get started now and let the fun begins</span>
+    </div>
+
+    <%= form_for @user, url: { action: 'create_user' } do |f| %>
 
     <% if @user.errors.any? %>
-      <%= render 'partials/mssg', mssg: @user.errors.full_messages[0] %>
+    <%= render 'partials/mssg', mssg: @user.errors.full_messages[0] %>
     <% end %>
 
     <%= f.text_field :username, class:"r_username", autofocus:true, spellcheck:false, autocomplete:false, placeholder:'Username', required: true %>
@@ -21,6 +26,111 @@
     <%= f.password_field :password, class: "r_password", placeholder: 'Password', required: true %>
     <%= f.submit "Signup for free", class:"r_submit" %>
 
-  <% end %>
+    <% end %>
 
-</div>
+  </div> -->
+
+
+
+  <div class="page-header header-filter" filter-color="black">
+    <div class="page-header-image" style="background-image:url(../assets/img/login.jpg)"></div>
+    <div class="content">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 ml-auto mr-auto">
+            <div class="info info-horizontal">
+              <div class="icon icon-primary">
+                <i class="now-ui-icons media-2_sound-wave"></i>
+              </div>
+              <div class="description">
+                <h5 class="info-title">Intranet</h5>
+                <p class="description">
+                  We've created the marketing campaign of the website. It was a very interesting
+                  collaboration.
+                </p>
+              </div>
+            </div>
+
+            <div class="info info-horizontal">
+              <div class="icon icon-primary">
+                <i class="now-ui-icons media-1_button-pause"></i>
+              </div>
+              <div class="description">
+                <h5 class="info-title">Rassembler</h5>
+                <p class="description">
+                  We've developed the website with HTML5 and CSS3. The client has access to the code
+                  using GitHub.
+                </p>
+              </div>
+            </div>
+
+            <div class="info info-horizontal">
+              <div class="icon icon-info">
+                <i class="now-ui-icons users_single-02"></i>
+              </div>
+              <div class="description">
+                <h5 class="info-title">Manifester ces idées</h5>
+                <p class="description">
+                  There is also a Fully Customizable CMS Admin Dashboard for this product.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mr-auto">
+
+            <div class="card card-signup">
+              <div class="card-body">
+                <h4 class="card-title text-center" style="color:black;">S'enregistrer</h4>
+         
+
+                <%= form_for @user, url: { action: 'create_user' } ,class:"form" do |f| %>
+             
+                <% if @user.errors.any? %>
+                  <%= render 'partials/mssg', mssg: @user.errors.full_messages[0] %>
+                <% end %>
+
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="now-ui-icons users_circle-08"></i></span>
+                  </div>
+                  <%= f.text_field :username, class:"r_username form-control", autofocus:true, spellcheck:false, autocomplete:false, placeholder:'Username', required: true %>
+
+                </div>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="now-ui-icons ui-1_email-85 "></i></span>
+                  </div>
+                  <!-- <input type="text" class="form-control" placeholder="Last Name..." autocomplete="name"> -->
+                  <%= f.email_field :email, class:"r_email form-control", spellcheck:false, autocomplete:false, placeholder:'Email', required:true %>
+
+                </div>
+
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="now-ui-icons ui-1_lock-circle-open"></i></span>
+                  </div>
+                  <!-- <input type="text" class="form-control" placeholder="Your Email..." autocomplete="email"> -->
+                  <%= f.password_field :password, class: "r_password form-control", placeholder: 'Password', required: true %>
+
+                </div>
+
+                <!-- If you want to add a checkbox to this form, uncomment this code -->
+
+                <div class="card-footer text-center">
+                    <div class="">
+                        <%= link_to "Vous avez déja un compte?", login_path, class: "link" %>
+                      </div>
+                  <!-- <a href="#pablo" class="btn btn-primary btn-round btn-lg">Get Started</a> -->
+                  <%= f.submit "Enregistrer", class:"r_submit btn btn-default btn-round btn-lg" %>
+
+                </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>

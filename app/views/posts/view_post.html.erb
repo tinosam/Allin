@@ -1,55 +1,75 @@
 <%= content_for :title, "View Post" %>
 
-<div class="home">
-  <div class="blog">
-    <div class="blog_c">
-      <span class="blog_title"><%= @post.title %></span>
-      <span class="blog_content"><%= @post.content %></span>
+<div class="wrapper">
+  <div class="page-header page-header-small">
+
+    <div class="page-header-image" data-parallax="true" style="background-image:url('../assets/img/header.jpg">
     </div>
-    <div class="blog_actions">
-      <div class="b_a_left">
-        <%=
+
+
+    <div class="content-center">
+      <div class="row">
+        <div class="col-md-8 ml-auto mr-auto text-center">
+          <h2 class="title">Voir Poste</h2>
+          <h4>All'In lancé en 2019.</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="home">
+    <div class="blog">
+      <div class="blog_c">
+        <span class="blog_title">
+          <%= @post.title %></span>
+        <span class="blog_content">
+          <%= @post.content %></span>
+      </div>
+      <div class="blog_actions">
+        <div class="b_a_left">
+          <%=
           if liked(@post.id)
             link_to "Unlike", unlike_path(@post.id), :class => "pri_btn", :method => :post
           else
             link_to "Like", like_path(@post.id), :class => "pri_btn", :method => :post
           end
         %>
-        <%= link_to "#{@likes} Likes", likes_path(@post.id), :class => "sec_btn" %>
-      </div>
-      <div class="b_a_right">
-        <%= link_to "Edit Post", edit_post_path(@post.id), class: "sec_btn" %>
-        <%=
+          <%= link_to "#{@likes} Likes", likes_path(@post.id), :class => "sec_btn" %>
+        </div>
+        <div class="b_a_right">
+          <%= link_to "Edit Post", edit_post_path(@post.id), class: "sec_btn" %>
+          <%=
           link_to "Delete",
           delete_post_path(@post.id),
           :class => "sec_btn blog_dlt",
           :data => { :confirm => "Are you sure?" },
           :method => :delete
         %>
-        <%= link_to "Done", profile_path(session[:id]), class: "pri_btn blog_back" %>
+          <%= link_to "Done", profile_path(session[:id]), class: "pri_btn blog_back" %>
+        </div>
       </div>
-    </div>
-    <div class="blog_actions">
-      <div id="disqus_thread"></div>
-      <script>
-      
-      /**
-      *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-      *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-      /*
-      var disqus_config = function () {
-      this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-      this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-      };
-      */
-      (function() { // DON'T EDIT BELOW THIS LINE
-      var d = document, s = d.createElement('script');
-      s.src = 'https://allinapp-1.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-      })();
-      </script>
-                                  
+      <div class="blog_actions">
+        <div id="disqus_thread"></div>
+        <script>
+          /**
+           *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+           *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+          /*
+          var disqus_config = function () {
+          this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+          this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+          };
+          */
+          (function () { // DON'T EDIT BELOW THIS LINE
+            var d = document,
+              s = d.createElement('script');
+            s.src = 'https://allinapp-1.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+          })();
+        </script>
+
+      </div>
     </div>
   </div>
 </div>

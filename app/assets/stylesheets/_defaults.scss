@@ -1,10 +1,10 @@
-$a: #2895F1;
+$a: #feea3a;
 $family: 'Open Sans', 'Roboto', Tahoma, arial, sans-serif;
 $dark: #1b2733;
 $fb: #fbfbfb;
-$ff: #fff;
+$ff: #fbfbfb;
 $ee: #eee;
-$pric: #1b9be9;
+$pric: #feea3a;
 $d_light: #66757f;
 $header: #f9f9f9;
 $header_border: #f7f5f5;
@@ -105,10 +105,10 @@ textarea:focus{
 input[type="submit"],
 input[type="button"],
 .pri_btn{
-  font-weight: 600;
+
   background: $pric;
   border: 1px solid $pric; /*#3e91b3*/
-  color: $ff;;
+  color: #000;
   border-radius: 3px;
   cursor: pointer;
   outline: none;

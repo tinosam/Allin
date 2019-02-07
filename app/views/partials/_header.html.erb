@@ -1,10 +1,12 @@
 <%= render 'partials/tophead' %>
 
-<% if flash.any? %>
-<%= render 'partials/mssg', mssg: flash[:notice] %>
-<% end %>
 
-<!-- <% if !session[:id] %>
+
+  <% if flash.any? %>
+  <%= render 'partials/mssg', mssg: flash[:notice] %>
+  <% end %>
+
+  <!-- <% if !session[:id] %>
   <div class="index_header">
     <div class="right">
       <%= link_to "Home", welcome_path %>
@@ -25,97 +27,101 @@
       <%= link_to "Logout", logout_path %>
     </div>
   </div>
+  color-on-scroll="400"
 <% end %> -->
 
 
-
-
-
-<nav class="navbar navbar-ct-warning navbar-relative fixed-top" role="navigation-demo" id="demo-navbar">
-
-  <div class="container">
-
-    <div class="navbar-header">
-
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-
-        <span class="sr-only">Toggle navigation</span>
-
-        <span class="icon-bar"></span>
-
-        <span class="icon-bar"></span>
-
-        <span class="icon-bar"></span>
-
-      </button>
-
-      <a class="btn btn-default" href="/">All'in</a>
-
-    </div>
-
-
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-          <%= link_to "Acceuil", root_path ,class:"btn btn-simple"%>
-        </li>
-      
-        <li>
-          <%= link_to "Actualité", explore_path,class:"btn btn-simple" %>
-        </li>
-        <li>
-            <%= link_to "Projets", new_post_path ,class:"btn btn-simple"%>
-          </li>
-        <li><a href=""class="btn btn-simple">Gallery</a></li>
-        <li>
-          <a href="" class="btn btn-simple">Archives</a>
-        </li>
-
-
-        <li class="dropdown">
-
-          <a href="#" class="dropdown-toggle btn btn-simple" data-toggle="dropdown">Connexion
-            <b class="caret"></b>
+  <nav class="navbar navbar-expand-lg bg-primary fixed-top " >
+    <div class="container">
+      <div class="navbar-translate">
+        <a class="navbar-brand btn btn-neutral" href="/" rel="tooltip" title="Acceuil de l'appli" data-placement="bottom"
+          target="_blank">
+          All'in
+        </a>
+        <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+          aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-bar top-bar"></span>
+          <span class="navbar-toggler-bar middle-bar"></span>
+          <span class="navbar-toggler-bar bottom-bar"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="./assets/img/blurred-image-1.jpg">
+        <ul class="navbar-nav">
+          <!-- <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0)" onclick="scrollToDownload()">
+            <i class="now-ui-icons arrows-1_cloud-download-93"></i>
+            <p>Download</p>
           </a>
+        </li> -->
+          <li class="nav-item">
+            <%= link_to "Acceuil", root_path,class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Actualité", explore_path,class:"nav-link" %>
+          </li>
 
-          <ul class="dropdown-menu">
+
+          <li class="nav-item">
+            <%= link_to "Projets", new_post_path ,class:"nav-link"%>
+          </li>
+          <li class="nav-item">
+            <a href="" class="nav-link">Gallery</a>
+          </li>
+          <li>
+            <a href="" class="nav-link  ">Archives</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink1" data-toggle="dropdown">
+              <!-- <i class="now-ui-icons users_single-02"></i> -->
+              <p>Connexion</p>
+            </a>
             <% if !session[:id] %>
-            <li>
-              <%= link_to "Signup", signup_path %>
-            </li>
 
-            <li>
-              <%= link_to "Login", login_path %>
-            </li>
+        
+
+      
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink1">
+              <a class="dropdown-item" href="signup">
+              S'enregistrer
+              </a>
+              <a class="dropdown-item"  href="login">
+               Se Connecter
+              </a>
+        
+            </div>
             <% else %>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink1">
+              
+                <%= link_to  "Desactivate account", deactivate_path(session[:id]), class:"dropdown-item"%>
+                <%= link_to "Profile", profile_path(session[:id]), class:"dropdown-item" %>
+                <%= link_to "Logout", logout_path, class:"dropdown-item" %>
+              </div>
 
-
-
-
-
-
-            <li>
-              <%= link_to  "Desactivate account", deactivate_path(session[:id]) %>
-            </li>
-
-            <li>
-              <%= link_to "Profile", profile_path(session[:id]) %>
-            </li>
-            <li class="divider"></li>
-            <li>
-              <%= link_to "Logout", logout_path%>
-            </li>
             <% end %>
-          </ul>
+          </li>
 
-        </li>
-
-      </ul>
-
-    </div><!-- /.navbar-collapse -->
-
-  </div><!-- /.container-fluid -->
-
-</nav>
-
+          <li class="nav-item">
+            <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/CreativeTim"
+              target="_blank">
+              <i class="fab fa-twitter"></i>
+              <p class="d-lg-none d-xl-none">Twitter</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/CreativeTim"
+              target="_blank">
+              <i class="fab fa-facebook-square"></i>
+              <p class="d-lg-none d-xl-none">Facebook</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom" href="https://www.instagram.com/CreativeTimOfficial"
+              target="_blank">
+              <i class="fab fa-instagram"></i>
+              <p class="d-lg-none d-xl-none">Instagram</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
